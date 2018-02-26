@@ -8,7 +8,7 @@ module.exports = {
     _demo: {
       scripts: `
         document.addEventListener('DOMContentLoaded', function () {
-          var d = ECL.datepickers({
+          ECL.datepickers({
             field: document.getElementById('datepicker'),
             firstDay: 1,
             maxDate: new Date(2020, 12, 31),
