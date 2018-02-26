@@ -20,7 +20,7 @@ likelihood of mistakes.
 
 ## Implementation notes
 
-To instantiation the JavaScript behaviors:
+To instantiate the JavaScript behaviors:
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function() {
