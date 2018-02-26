@@ -20,20 +20,38 @@ likelihood of mistakes.
 
 ## Implementation notes
 
-Component `ecl-datepickers` depends on [Pikaday](https://github.com/dbushell/Pikaday). Please follow the [installation guide](https://github.com/dbushell/Pikaday#installation) of the library in order to add the JavaScript behaviors of datepickers to your project.
-
-Then, add an instantiation script similar to the following:
+To instantiation the JavaScript behaviors:
 
 ```javascript
-var picker = new Pikaday({
-  field: document.getElementById('datepicker'),
-  firstDay: 1,
-  maxDate: new Date(2020, 12, 31),
-  theme: 'ecl-pika-theme',
-  yearRange: [2000, 2020],
+document.addEventListener('DOMContentLoaded', function() {
+  ECL.datepickers({
+    field: document.getElementById('datepicker'),
+    firstDay: 1,
+    maxDate: new Date(2020, 12, 31),
+    yearRange: [2000, 2020],
+  });
 });
 ```
 
-The most important setting is the `theme: 'ecl-pika-theme'` which will add the necessary styling of ECL on datepickers.
+Where options passed to `ECL.datepickers` match signature of [Pikaday](https://github.com/dbushell/Pikaday) library options.
+
+By default `theme: 'ecl-pika-theme'` which will add the necessary styling of ECL on datepickers, no need to pass this option!
 
 Please make sure you detach other libraries from the inputs of type dates like jQuery or its UI datepicker, which will conflict when having several behaviors attached to same elements.
+
+If you need to access the low-level [API methods](https://github.com/dbushell/Pikaday#methods) of `Pika` through the ECL.datepicker, you can do that through the exposed `pika` property.
+
+For example, this way you can show datepicker programatically:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+  var datepicker = ECL.datepickers({
+    field: document.getElementById('datepicker'),
+    firstDay: 1,
+    maxDate: new Date(2020, 12, 31),
+    yearRange: [2000, 2020],
+  });
+
+  datepicker.pika.show();
+});
+```
